@@ -1,6 +1,4 @@
-ID,Name,Description,ImageUrl,ReleaseDate,DiscontinuedDate,Price,Height,Width,Quantity
-550e8400-e29b-41d4-a716-446655440000,Laptop Pro 15,High performance laptop for developers,https://example.com/images/laptop-pro-15.png,2024-01-15T00:00:00Z,,2500.00,2.00,35.00,100.00
-550e8400-e29b-41d4-a716-446655440001,Smartphone X,Latest generation smartphone,https://example.com/images/smartphone-x.png,2024-03-01T00:00:00Z,,1200.50,0.80,7.50,250.00
-550e8400-e29b-41d4-a716-446655440002,Wireless Headphones,Noise cancelling headphones,https://example.com/images/headphones.png,2023-11-10T00:00:00Z,,350.99,18.00,15.00,500.00
-550e8400-e29b-41d4-a716-446655440003,4K Monitor,Ultra HD professional monitor,https://example.com/images/monitor-4k.png,2023-05-20T00:00:00Z,,899.90,45.00,60.00,75.00
-550e8400-e29b-41d4-a716-446655440004,Old Tablet,Previous generation tablet,https://example.com/images/old-tablet.png,2022-02-10T00:00:00Z,2024-01-01T00:00:00Z,499.99,0.70,24.00,0.00
+ID,Name,Description,ImageUrl,ReleaseDate,DiscontinuedDate,Price,Height,Width,Quantity,Supplier_ID,UnitOfMeasure_ID,DimensionUnits_ID,Category_ID,Currency_ID
+550e8400-e29b-41d4-a716-446655440000,Laptop Pro 15,High performance laptop,https://example.com/images/laptop-pro-15.png,2024-01-15T00:00:00Z,,2500.00,2.00,35.00,100.00,550e8400-e29b-41d4-a716-446655440010,EA,CM,B,USD
+550e8400-e29b-41d4-a716-446655440001,Wireless Headphones,Noise cancelling headphones,https://example.com/images/headphones.png,2023-11-10T00:00:00Z,,350.99,18.00,15.00,500.00,550e8400-e29b-41d4-a716-446655440011,EA,CM,C,USD
+550e8400-e29b-41d4-a716-446655440002,4K Monitor,Professional UHD monitor,https://example.com/images/monitor-4k.png,2023-05-20T00:00:00Z,,899.90,45.00,60.00,75.00,550e8400-e29b-41d4-a716-446655440010,EA,CM,B,EUR

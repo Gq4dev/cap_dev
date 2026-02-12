@@ -1,5 +1,4 @@
-Name,Rating,Comment
-Laptop Pro 15,5,Excellent performance and battery life
-Smartphone X,4,Very good but slightly expensive
-Wireless Headphones,5,Outstanding noise cancellation
-4K Monitor,4,Great display quality
+ID,Name,Rating,Comment,Product_ID
+550e8400-e29b-41d4-a716-446655440200,Laptop Pro 15,5,Excellent performance and battery life,550e8400-e29b-41d4-a716-446655440000
+550e8400-e29b-41d4-a716-446655440201,Wireless Headphones,5,Amazing noise cancellation,550e8400-e29b-41d4-a716-446655440001
+550e8400-e29b-41d4-a716-446655440202,4K Monitor,4,Great display quality,550e8400-e29b-41d4-a716-446655440002
