@@ -1,0 +1,4 @@
+ID,Name,address_Street,address_City,address_State,address_PostalCode,address_Country,Email,Phone,Fax
+550e8400-e29b-41d4-a716-446655440010,Tech Supplies SA,Av. Siempre Viva 742,Buenos Aires,BA,1000,ARG,ventas@techsupplies.com,+541112345678,+541112345679
+550e8400-e29b-41d4-a716-446655440011,Global Components Inc,123 Market St,New York,NY,10001,USA,sales@globalcomp.com,+12125550123,+12125550124
+550e8400-e29b-41d4-a716-446655440012,Electronica Brasil Ltda,Rua Central 150,Sao Paulo,SP,01000,BRA,contato@eletronicabr.com,+551199998888,+551199998889
