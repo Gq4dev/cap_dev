@@ -1,7 +1,9 @@
 namespace com.training;
 
-using {cuid,managed} from '@sap/cds/common';
-
+using {
+    cuid,
+    managed
+} from '@sap/cds/common';
 
 
 type Address : {
@@ -104,20 +106,14 @@ entity Products : cuid, managed {
 
 };
 
-entity Orders : cuid, managed {
-    // key ID       : UUID;
-    Date     : Date;
-    Customer : String;
-    Item     : Composition of many OrderItems
-                   on Item.Order = $self
+entity Orders {
+    key ClientEmail : String(65);
+        FirstName   : String(30);
+        LastName    : String(30);
+        CreatedOn   : Date;
+        Reviewed    : Boolean;
+        Approved    : Boolean;
 };
-
-entity OrderItems : cuid, managed {
-    // key ID       : UUID;
-    Order    : Association to Orders;
-    Product  : Association to Products;
-    Quantity : Integer;
-}
 
 
 entity Suppliers : cuid, managed {
@@ -140,12 +136,12 @@ entity Categories {
 entity StockAvailability {
     key ID          : Integer;
         Description : localized String;
-        Product: Association to Products
+        Product     : Association to Products
 };
 
 entity Currencies {
     key ID          : String(3);
-        Description :localized String
+        Description : localized String
 };
 
 entity UnitOfMeasures {
@@ -160,8 +156,8 @@ entity DimensionUnits {
 
 entity Months {
     key ID               : String(2);
-        Description      :localized String;
-        ShortDescription :localized String(3);
+        Description      : localized String;
+        ShortDescription : localized String(3);
 };
 
 entity ProductReview : cuid, managed {
@@ -172,7 +168,7 @@ entity ProductReview : cuid, managed {
     Product : Association to Products;
 };
 
-entity SalesData : cuid , managed{
+entity SalesData : cuid, managed {
     // key ID            : UUID;
     DeliveryDate  : DateTime;
     Revenue       : Decimal(16, 2);
@@ -215,7 +211,6 @@ entity ProjProducts2 as
         Name,
         ReleaseDate
     };
-
 
 
 extend Products with {

@@ -16,29 +16,40 @@ using {com.gq4dev as gq4dev} from '../db/schema.cds';
 // }
 
 define service CatalogService {
+
     entity Products          as
-        select from gq4dev.materials.Products {
+        select from gq4dev.reports.Products {
             ID,
-            Name           as ProductName,
-            Description,
+            Name           as ProductName     @mandatory,
+            Description                       @mandatory,
             ImageUrl,
             ReleaseDate,
             DiscontinuedDate,
-            Price,
-            Quantity,
+            Price                             @mandatory,
+            Quantity                          @(
+                mandatory,
+                assert.range: [
+                    0.00,
+                    20.00
+                ]
+            ),
             Height,
             Width,
-            UnitOfMeasure  as ToUnitOfMeasure,
-            Currency       as ToCurrency,
-            Category       as ToCategory,
-            Category.Name  as Category,
+            UnitOfMeasure  as ToUnitOfMeasure @mandatory,
+            Currency       as ToCurrency      @mandatory,
+            Category       as ToCategory      @mandatory,
+            Category.Name  as Category        @readonly,
             DimensionUnits as ToDimensionUnit,
             SalesData,
             Supplier,
-            Reviews
+            Reviews,
+            Rating,
+            StockAvailability,
+            ToStockAvailibility
 
         };
 
+    @readonly
     entity Supplier          as
         select from gq4dev.sales.Suppliers {
             ID,
@@ -59,6 +70,7 @@ define service CatalogService {
             Product as ToProduct
         };
 
+    @readonly
     entity SalesData         as
         select from gq4dev.sales.SalesData {
             ID,
@@ -70,6 +82,7 @@ define service CatalogService {
             Product                   as toproduct
         };
 
+    @readonly
     entity StockAvailability as
         select from gq4dev.materials.StockAvailability {
             ID,
@@ -77,27 +90,55 @@ define service CatalogService {
             Product as ToProduct
         };
 
+    @readonly
     entity VH_Categories     as
         select from gq4dev.materials.Categories {
             ID   as Code,
             Name as Text
         }
 
+    @readonly
     entity VH_Currencies     as
         select from gq4dev.materials.Currencies {
             ID          as Code,
             Description as Text
         }
 
+    @readonly
     entity VH_UnitOfMeasures as
         select from gq4dev.materials.UnitOfMeasures {
             ID          as Code,
             Description as Text
         }
 
+    //Pojection con PostFix
+    @readonly
     entity VH_DimensionUnits as
-        select from gq4dev.materials.DimensionUnits {
+        select
             ID          as Code,
             Description as Text
+
+        from gq4dev.materials.DimensionUnits
+
+}
+
+service MyService {
+    entity SuppliersProducts as
+        select from gq4dev.materials.Products[Name = 'Laptop Pro 15']{
+            *,
+            Name,
+            Description,
+            Supplier.Address
         }
+        where
+            Supplier.Address.PostalCode = 1000;
+
+
+}
+
+define service Reports {
+
+    entity AverageRating as projection on gq4dev.reports.AverageRating;
+
+
 }

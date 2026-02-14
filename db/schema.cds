@@ -74,13 +74,15 @@ context materials {
             Price,
             Quantity
         }
-  entity ProductReview : cuid, managed {
+
+    entity ProductReview : cuid, managed {
         // key ID      : UUID;
         Name    : String;
         Rating  : Integer;
         Comment : String;
         Product : Association to materials.Products;
     };
+
     entity SelProducts2  as
         select from gq4dev.materials.Products
         left join materials.ProductReview
@@ -144,7 +146,6 @@ context sales {
             ShortDescription : localized String(3);
     };
 
-  
 
     entity SalesData : cuid, managed {
         // key ID            : UUID;
@@ -154,4 +155,39 @@ context sales {
         Currency      : Association to materials.Currencies;
         DeliveryMonth : Association to Months;
     };
+
+}
+
+context reports {
+    entity AverageRating as
+        select from gq4dev.materials.ProductReview {
+            Product.ID  as ProductId,
+            avg(Rating) as AverageRating : Decimal(16, 2)
+        }
+        group by
+            Product.ID;
+
+    entity Products      as
+        select from gq4dev.materials.Products
+        mixin {
+            ToStockAvailibility : Association to gq4dev.materials.StockAvailability
+                                      on ToStockAvailibility.ID = $projection.StockAvailability;
+            ToAverageRating     : Association to AverageRating
+                                      on ToAverageRating.ProductId = ID;
+        }
+
+        into {
+            *,
+            ToAverageRating.AverageRating as Rating,
+            case
+                when Quantity >= 8
+                     then 3
+                when Quantity > 0
+                     then 2
+                else 1
+            end                           as StockAvailability : Integer,
+            ToStockAvailibility
+        }
+
+
 }
