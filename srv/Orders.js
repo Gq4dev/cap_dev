@@ -1,5 +1,5 @@
 const cds = require("@sap/cds");
-const { INSERT, UPDATE } = require("@sap/cds/lib/ql/cds-ql");
+const { INSERT, UPDATE, DELETE } = require("@sap/cds/lib/ql/cds-ql");
 const SELECT = require("@sap/cds/lib/ql/SELECT");
 const { Orders } = cds.entities("com.training");
 
@@ -58,10 +58,10 @@ module.exports = (srv) => {
     //**Update */
 
     srv.on("UPDATE", "UpdateOrder", async (req) => {
-        let { ClientEmail, FirstName, LastName} = req.data
+        let { ClientEmail, FirstName, LastName } = req.data
         let resultData = await cds.tx(req).run(
             [
-                UPDATE(Orders,ClientEmail).set({
+                UPDATE(Orders, ClientEmail).set({
                     FirstName: FirstName,
                     LastName: LastName,
 
@@ -72,6 +72,26 @@ module.exports = (srv) => {
             console.log("Reject", reject)
 
             if (resolve[0] == 0) {
+                req.error(409, "Record Not Found")
+            }
+        }).catch((err) => {
+            console.log(err)
+            req.error(err.code, err.message)
+        })
+        console.log("Before End", resultData)
+        return resultData
+    })
+
+    //**Delete */
+    srv.on("DELETE", "DeleteOrder", async (req) => {
+        let { ClientEmail } = req.data
+        let resultData = await cds.tx(req).run(
+            DELETE.from(Orders).where({ ClientEmail: ClientEmail })
+        ).then((resolve, reject) => {
+            console.log("Resolve", resolve)
+            console.log("Reject", reject)
+
+            if (resolve !== 1) {
                 req.error(409, "Record Not Found")
             }
         }).catch((err) => {

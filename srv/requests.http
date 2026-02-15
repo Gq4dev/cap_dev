@@ -27,3 +27,7 @@ Content-Type: application/json
     "FirstName": "Julian",
 "LastName": "Tapia"
 }
+
+### Delete Order
+
+DELETE  http://localhost:4004/odata/v4/manage-orders/DeleteOrder('cliente3@gmail.com') HTTP/1.1
