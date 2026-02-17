@@ -1,5 +1,5 @@
-ClientEmail;FirstName;LastName;CreatedOn;Reviewed;Approved
-cliente1@gmail.com;Juan;P. Gomez;2022-01-13;false;true
-cliente2@gmail.com;Jose;P. Peres;2025-03-3;false;true
-cliente3@gmail.com;Fabian;Nicola;2022-05-14;false;false
-cliente4@gmail.com;Martin;Pomez;2021-05-22;true;false
+ClientEmail;FirstName;LastName;CreatedOn;Reviewed;Approved;Country_code;Status
+cliente1@gmail.com;Juan;P. Gomez;2022-01-13;false;true;AR;
+cliente2@gmail.com;Jose;P. Peres;2025-03-3;false;true;ES;
+cliente3@gmail.com;Fabian;Nicola;2022-05-14;false;false;UK;
+cliente4@gmail.com;Martin;Pomez;2021-05-22;true;false;AR;

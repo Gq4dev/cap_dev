@@ -2,7 +2,8 @@ namespace com.training;
 
 using {
     cuid,
-    managed
+    managed,
+    Country
 } from '@sap/cds/common';
 
 
@@ -13,6 +14,7 @@ type Address : {
     PostalCode : String(5);
     Country    : String(3);
 }
+
 
 //TIPOS ARRAY
 // type EmailsAddresses_01 : array of {
@@ -113,6 +115,9 @@ entity Orders {
         CreatedOn   : Date;
         Reviewed    : Boolean;
         Approved    : Boolean;
+        Country     : Country;
+        Status      : String(1);
+        
 };
 
 

@@ -1,17 +1,17 @@
 ### Get Orders
 
-GET http://localhost:4004/odata/v4/manage-orders/GetOrders
+GET http://localhost:4004/odata/v4/manage-orders/Orders
 
 ### Get Orders Params
-GET http://localhost:4004/odata/v4/manage-orders/GetOrders('cliente2@gmail.com')
+GET http://localhost:4004/odata/v4/manage-orders/Orders('cliente2@gmail.com')
 
 ### 3 Create Orders
 
-POST  http://localhost:4004/odata/v4/manage-orders/CreateOrder HTTP/1.1
+POST  http://localhost:4004/odata/v4/manage-orders/Orders HTTP/1.1
 Content-Type: application/json
 
 {
-    "ClientEmail": "client8@gmail.com",
+    "ClientEmail": "client9@gmail.com",
     "FirstName": "Guillermo",
     "LastName": "Quattrocchi",
     "CreatedOn": "2021-05-22"
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ### Update Orders
 
-PUT http://localhost:4004/odata/v4/manage-orders/UpdateOrder('cliente2@gmail.com') HTTP/1.1
+PUT http://localhost:4004/odata/v4/manage-orders/Orders('cliente2@gmail.com') HTTP/1.1
 Content-Type: application/json
 
 {
@@ -30,4 +30,34 @@ Content-Type: application/json
 
 ### Delete Order
 
-DELETE  http://localhost:4004/odata/v4/manage-orders/DeleteOrder('cliente3@gmail.com') HTTP/1.1
+DELETE  http://localhost:4004/odata/v4/manage-orders/Orders('cliente3@gmail.com') HTTP/1.1
+
+
+### GetTaxes
+
+GET http://localhost:4004/odata/v4/manage-orders/getClientTaxRate(clientEmail='cliente3@gmail.com')
+
+
+### Cancel order ACTION
+
+POST http://localhost:4004/odata/v4/manage-orders/cancelOrder
+Content-Type: application/json
+
+{
+"clientEmail": "cliente3@gmail.com"
+}
+
+
+### GetTaxes Function Bound
+
+GET http://localhost:4004/odata/v4/manage-orders/Orders("cliente1@gmail.com")/ManageOrders.getClientTaxRate(clientEmail='cliente3@gmail.com')
+
+
+### Cancel order ACTION Bound
+
+POST http://localhost:4004/odata/v4/manage-orders/Orders("cliente3@gmail.com")/ManageOrders.cancelOrder
+Content-Type: application/json
+
+{
+"clientEmail": "cliente3@gmail.com"
+}
