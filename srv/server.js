@@ -12,4 +12,9 @@ cds.on("bootstrap", (app) => {
     })
 })
 
+
+if (process.env.NODE_ENV === "development") {
+    const swaggerUi = require("cds-swagger-ui-express");
+    app.use("/swagger", swaggerUi.serve, swaggerUi.setup(require("cds-swagger")(app)));
+}
 module.exports = cds.server;

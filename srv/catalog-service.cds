@@ -15,7 +15,7 @@ using {com.gq4dev as gq4dev} from '../db/schema.cds';
 
 // }
 
-define service CatalogService {
+@graphql define service CatalogService {
 
     entity Products          as
         select from gq4dev.reports.Products {

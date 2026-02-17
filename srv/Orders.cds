@@ -1,6 +1,6 @@
 using {com.training as training} from '../db/training';
 
-service ManageOrders {
+@graphql service ManageOrders {
     type CancelOrderReturn {
         status  : String enum {
             Succeeded;
