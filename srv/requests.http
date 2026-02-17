@@ -50,12 +50,12 @@ Content-Type: application/json
 
 ### GetTaxes Function Bound
 
-GET http://localhost:4004/odata/v4/manage-orders/Orders("cliente1@gmail.com")/ManageOrders.getClientTaxRate(clientEmail='cliente3@gmail.com')
+GET http://localhost:4004/odata/v4/manage-orders/Orders('cliente1@gmail.com')/ManageOrders.getClientTaxRate(clientEmail='cliente3@gmail.com')
 
 
 ### Cancel order ACTION Bound
 
-POST http://localhost:4004/odata/v4/manage-orders/Orders("cliente3@gmail.com")/ManageOrders.cancelOrder
+POST http://localhost:4004/odata/v4/manage-orders/Orders('cliente3@gmail.com')/ManageOrders.cancelOrder
 Content-Type: application/json
 
 {

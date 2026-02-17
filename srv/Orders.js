@@ -109,7 +109,7 @@ module.exports = (srv) => {
 
 
     //**Funcion para traer Tax */
-    srv.on("getClientTaxRate", async (req) => {
+    srv.on("getClientTaxRate", "Orders", async (req) => {
         const { clientEmail } = req.data;
         if (!clientEmail) req.reject(400, "clientEmail is required");
 
@@ -129,7 +129,7 @@ module.exports = (srv) => {
     });
 
     // ACTIONS
-    srv.on("cancelOrder", async (req) => {
+    srv.on("cancelOrder", "Orders", async (req) => {
         const { clientEmail } = req.data
 
         const db = cds.tx(req);
