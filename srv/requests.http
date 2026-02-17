@@ -61,3 +61,8 @@ Content-Type: application/json
 {
 "clientEmail": "cliente3@gmail.com"
 }
+
+
+### Get Products
+
+GET http://localhost:4004/odata/v4/sapbackend-exit/Products
